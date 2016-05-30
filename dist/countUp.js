@@ -60,7 +60,8 @@ var CountUp = function(target, startVal, endVal, decimals, duration, options) {
         separator : ',', // character to use as a separator
         decimal : '.', // character to use as a decimal
         easingFn: null, // optional custom easing closure function, default is Robert Penner's easeOutExpo
-        formattingFn: null // optional custom formatting function, default is self.formatNumber below
+        formattingFn: null ,// optional custom formatting function, default is self.formatNumber below
+        separatorAll : false
     };
     // extend default options with passed options object
     for (var key in options) {
@@ -92,6 +93,12 @@ var CountUp = function(target, startVal, endVal, decimals, duration, options) {
         if (self.options.useGrouping) {
             while (rgx.test(x1)) {
                 x1 = x1.replace(rgx, '$1' + self.options.separator + '$2');
+            }
+        }
+        if(self.options.separatorAll){
+            rgx = /(\d+)(\d{1})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx,'<span class="'+self.options.separatorAll+'">'+ '$1' + '</span><span class="'+self.options.separatorAll+'">' + '$2'+'</span>');
             }
         }
         return self.options.prefix + x1 + x2 + self.options.suffix;
