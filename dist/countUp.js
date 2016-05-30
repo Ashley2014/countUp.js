@@ -13,6 +13,7 @@
 
     countUp.js
     by @inorganik
+ add separatorAll 1.0.1
 
 */
 
