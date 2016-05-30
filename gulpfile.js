@@ -19,6 +19,7 @@ gulp.task('umd', ['clean'], function(file) {
         .pipe(gulp.dest('dist/'))
         .pipe(uglify({preserveComments: 'license'}))
         .pipe(rename({
+            prefix:'hb.',
             suffix: '.min'
         }))
         .pipe(gulp.dest('dist/'));
@@ -27,6 +28,7 @@ gulp.task('umd', ['clean'], function(file) {
         .pipe(gulp.dest('dist/'))
         .pipe(uglify())
         .pipe(rename({
+            prefix:'hb.',
             suffix: '.min'
         }))
         .pipe(gulp.dest('dist/'));
